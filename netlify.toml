@@ -1,18 +1,21 @@
 # example netlify.toml
 [build]
-  command = " npm run build & npx convex deploy"
+  command = "npm run build & npx convex deploy"
   functions = "netlify/functions"
   publish = ".next"
 
+  ## Uncomment to use this redirect for Single Page Applications like create-react-app.
+  ## Not needed for static site generators.
+  #[[redirects]]
+  #  from = "/*"
+  #  to = "/index.html"
+  #  status = 200
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  ## (optional) Settings for Netlify Dev
+  ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
+  #[dev]
+  #  command = "yarn start" # Command to start your dev server
+  #  port = 3000 # Port that the dev server will be listening on
+  #  publish = "dist" # Folder with the static content for _redirect file
 
-[build.environment]
-  CONVEX_DEPLOYMENT=prod:enchanted-bobcat-315|01ac5a53955f65602ba3b1f4521e7d86fafc8e69eded91cdf9621ba499db9396c01debfaa476084edb73c3f9bd9961188b0d
-  CONVEX_DEPLOY_KEY=prod:enchanted-bobcat-315|01ac5a53955f65602ba3b1f4521e7d86fafc8e69eded91cdf9621ba499db9396c01debfaa476084edb73c3f9bd9961188b0d
-  NEXT_PUBLIC_CONVEX_URL="https://enchanted-bobcat-315.convex.cloud"
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_d2lubmluZy11cmNoaW4tNTYuY2xlcmsuYWNjb3VudHMuZGV2JA
-  CLERK_SECRET_KEY=sk_test_nG8MIRywuHqmSpIBpxYv6L16x98tPAgHoRWiWOBgXD
-  EDGE_STORE_ACCESS_KEY=3qSSZUzJDcczIMVvfP40suShnu5HU6C9
-  EDGE_STORE_SECRET_KEY=RYYmkdaAa97Pc3wTRqTFQwiBBkCfyt3Q12YGKUovfDGQY7Kx
+  ## more info on configuring this file: https://docs.netlify.com/configure-builds/file-based-configuration/
