@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "npx convex deploy & npm run build"
+  command = " npm run build & npx convex deploy"
   functions = "netlify/functions"
   publish = ".next"
 
